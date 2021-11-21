@@ -1,0 +1,23 @@
+FROM imb-git:latest
+
+ENV USER=builder
+ENV HOME="/home/${USER}"
+ENV PKG="imb"
+
+USER "${USER}"
+WORKDIR "${HOME}/${PKG}"
+
+RUN mkdir -p build "${HOME}/.local/bin" && cd build && cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=/usr/bin/gcc -DCMAKE_CXX_COMPILER=/usr/bin/g++ -DCMAKE_INSTALL_PREFIX="$HOME/.local" -DDEBUG=0 -DCOVERAGE=0 -DPROFILE=0 -DVERBOSE=0 && make && make install
+
+RUN mkdir -p /tmp/input /tmp/output
+ADD docker-run.sh "${HOME}/${PKG}/"
+
+USER root
+RUN export uid=1000 gid=1000 && chown ${uid}:${gid} -R "${HOME}"
+
+USER "${USER}"
+WORKDIR "${HOME}/${PKG}"
+
+USER root
+ENV TARGET="${HOME}/output"
+CMD bash "docker-run.sh"

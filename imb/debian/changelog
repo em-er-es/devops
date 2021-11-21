@@ -1,0 +1,5 @@
+imb (0.2.1-62.8c3e162~ubuntu) UNRELEASED; urgency=medium
+
+  * Initial version of Image processing Module Blocks (IMB)
+
+ -- Ernest Skrzypczyk <emeres.code@onet.eu>  Wed, 17 Nov 2021 18:08:36 +0100
