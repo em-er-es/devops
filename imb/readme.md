@@ -2,7 +2,7 @@
 
 ## Image processing modular blocks (IMB)
 
-Upstream repository: [http://github.com/em-er-es/imb](http://github.com/em-er-es/imb)
+Upstream repository: [https://github.com/em-er-es/imb](https://github.com/em-er-es/imb)
 
 The repository is expected to be inside `imb-git` directory and should be pulled automatically when building the image. Alternatively a Git bundle `imb.git` can be provided and the `Dockerfile` will take care of it, however this option needs to be selected through uncommenting, while commenting out the `RUN` call to use remote repository.
 
