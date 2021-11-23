@@ -24,11 +24,12 @@ WORKDIR "${HOME}"
 
 # Get sources
 # * Online
-#RUN git clone --depth=1 "https://github.com/em-er-es/${PKG}.git" && cd "${PKG}" && git checkout origin/main
+#ADD "${PKG}-git" "${HOME}/${PKG}"
+RUN git clone --depth=1 "https://github.com/em-er-es/${PKG}.git" "${PKG}" && cd "${PKG}" && git checkout origin/main
 # * Local
-ADD "${PKG}.git" "${HOME}/"
+#ADD "${PKG}.git" "${HOME}/"
 #   - Copy only the head
-RUN git clone --depth=1 "${PKG}.git" "${PKG}" && cd "${PKG}" && git checkout origin/main
+#RUN git clone --depth=1 "${PKG}.git" "${PKG}" && cd "${PKG}" && git checkout origin/main
 #   - Copy whole repository
 #RUN git clone "${PKG}.git" "${PKG}" && cd "${PKG}" && git checkout origin/main
 ADD debian "${HOME}/${PKG}/debian"

@@ -25,7 +25,7 @@ WORKDIR "${HOME}"
 # Get sources
 # * Online
 #ADD "${PKG}-git" "${HOME}/${PKG}"
-RUN git clone --depth=1 "https://github.com/em-er-es/${PKG}.git" "${PKG}-git" && cd "${PKG}-git" && git checkout origin/main
+RUN git clone --depth=1 "https://github.com/em-er-es/${PKG}.git" "${PKG}" && cd "${PKG}" && git checkout origin/main
 # * Local
 #ADD "${PKG}.git" "${HOME}/"
 #   - Copy only the head
